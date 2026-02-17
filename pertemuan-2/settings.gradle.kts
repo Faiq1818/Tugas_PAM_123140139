@@ -1,4 +1,4 @@
-rootProject.name = "KotlinProject"
+rootProject.name = "pertemuan-2"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {

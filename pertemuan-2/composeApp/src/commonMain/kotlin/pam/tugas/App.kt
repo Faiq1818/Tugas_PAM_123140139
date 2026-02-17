@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.resources.painterResource
 
-import kotlinproject.composeapp.generated.resources.Res
-import kotlinproject.composeapp.generated.resources.compose_multiplatform
+import pertemuan_2.composeapp.generated.resources.Res
+import pertemuan_2.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
