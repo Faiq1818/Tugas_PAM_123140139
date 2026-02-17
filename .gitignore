@@ -1,0 +1,62 @@
+# --- Gradle ---
+.gradle/
+build/
+**/build/
+
+# --- Kotlin / JVM ---
+*.class
+*.log
+*.tmp
+*.swp
+*.kotlin_module
+
+# --- IntelliJ / Android Studio ---
+.idea/
+*.iml
+*.ipr
+*.iws
+local.properties
+
+# --- Android ---
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+output.json
+
+# --- Desktop (Compose Desktop) ---
+out/
+*.exe
+*.msi
+*.dmg
+*.deb
+*.rpm
+
+# --- macOS ---
+.DS_Store
+
+# --- Linux ---
+*~
+
+# --- Windows ---
+Thumbs.db
+Desktop.ini
+
+# --- Environment files ---
+.env
+.env.*
+
+# --- Generated resources ---
+composeApp/build/
+composeApp/generated/
+
+# --- KMP cache ---
+.konan/
+
+# --- VS Code ---
+.vscode/
+
+# --- Logs ---
+logs/
+*.log
