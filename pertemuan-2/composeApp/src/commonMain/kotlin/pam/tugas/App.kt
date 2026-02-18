@@ -1,11 +1,11 @@
 package pam.tugas
 
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -21,8 +21,7 @@ import kotlinx.coroutines.flow.*
 data class News(
     val id: Int,
     val title: String,
-    val category: String,
-    val content: String
+    val category: String
 )
 
 data class NewsUi(
@@ -43,8 +42,7 @@ class NewsRepository {
                 News(
                     id = id,
                     title = "Breaking News $id",
-                    category = category,
-                    content = "Isi berita kategori $category"
+                    category = category
                 )
             )
             id++
@@ -102,7 +100,6 @@ class NewsViewModel(
     }
 }
 
-
 @Composable
 fun CategoryItem(
     text: String,
@@ -122,10 +119,7 @@ fun CategoryItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(text)
-        RadioButton(
-            selected = selected,
-            onClick = null
-        )
+        RadioButton(selected = selected, onClick = null)
     }
 }
 
