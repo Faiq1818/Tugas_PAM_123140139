@@ -18,14 +18,6 @@ import org.jetbrains.compose.resources.painterResource
 import pertemuan_3.composeapp.generated.resources.Res
 import pertemuan_3.composeapp.generated.resources.profile
 
-data class Profile(
-    val name: String,
-    val bio: String,
-    val email: String,
-    val phone: String,
-    val location: String
-)
-
 @Composable
 @Preview
 fun App() {
@@ -35,6 +27,14 @@ fun App() {
         secondary = Color(0xFF212121)
     )
 
+    val profile = ProfileUiState(
+        name = "Faiq Ghozy Erlangga",
+        bio = "Informatics Student • Linux • NixOS • Full Stack Developer",
+        email = "faiq@email.com",
+        phone = "+62 812 3456 7890",
+        location = "Lampung, Indonesia"
+    )
+
     MaterialTheme(colorScheme = myColorScheme) {
         Box(
             modifier = Modifier
@@ -42,13 +42,13 @@ fun App() {
                 .background(MaterialTheme.colorScheme.primaryContainer),
             contentAlignment = Alignment.Center
         ) {
-            ProfileCard()
+            ProfileCard(profile)
         }
     }
 }
 
 @Composable
-fun ProfileCard() {
+fun ProfileCard(profile: ProfileUiState) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -62,14 +62,14 @@ fun ProfileCard() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ProfileHeader(
-                name = "Faiq Ghozy Erlangga",
-                bio = "Informatics Student • Linux • NixOS • Full Stack Developer"
+                name = profile.name,
+                bio = profile.bio
             )
             Spacer(modifier = Modifier.height(16.dp))
 
-            InfoItem("Email", "faiq@email.com")
-            InfoItem("Phone", "+62 812 3456 7890")
-            InfoItem("Location", "Lampung, Indonesia")
+            InfoItem("Email", profile.email)
+            InfoItem("Phone", profile.phone)
+            InfoItem("Location", profile.location)
 
             Spacer(modifier = Modifier.height(20.dp))
 
