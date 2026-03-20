@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,13 +28,17 @@ fun App() {
         secondary = Color(0xFF212121)
     )
 
-    val profile = ProfileUiState(
-        name = "Faiq Ghozy Erlangga",
-        bio = "Informatics Student • Linux • NixOS • Full Stack Developer",
-        email = "faiq@email.com",
-        phone = "+62 812 3456 7890",
-        location = "Lampung, Indonesia"
-    )
+    var profile by remember {
+        mutableStateOf(
+            ProfileUiState(
+                name = "Faiq Ghozy Erlangga",
+                bio = "Informatics Student • Linux • NixOS • Full Stack Developer",
+                email = "faiq@email.com",
+                phone = "+62 812 3456 7890",
+                location = "Lampung, Indonesia"
+            )
+        )
+    }
 
     MaterialTheme(colorScheme = myColorScheme) {
         Box(
@@ -79,7 +84,7 @@ fun ProfileCard(profile: ProfileUiState) {
                     containerColor = MaterialTheme.colorScheme.secondary,
                     contentColor = Color.White
                 )            ) {
-                Text("Contact Me")
+                Text("Edit Profile")
             }
         }
     }
