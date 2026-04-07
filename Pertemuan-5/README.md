@@ -11,6 +11,9 @@
 
 ![Demo](./../screenshots/pertemuan5.gif)
 
+## Navigation Flow
+![Flow](./../screenshots/pertemuan5flow.png)
+
 ## Cara run aplikasi
 - Buka Android Studio
 - Buka file `/Pertemuan-5/composeApp/src/androidMain/kotlin/com/pertemuan5/App.kt`
