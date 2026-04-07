@@ -1,4 +1,4 @@
-package com.pertemuan5
+package com.pertemuan5.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
