@@ -1,147 +1,42 @@
 package com.pertemuan3
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
-import org.jetbrains.compose.resources.painterResource
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.pertemuan3.ui.ProfileScreen
+import com.pertemuan3.viewmodel.ProfileViewModel
 
-import pertemuan_3.composeapp.generated.resources.Res
-import pertemuan_3.composeapp.generated.resources.profile
+private val LightColors = lightColorScheme(
+    background = Color(0xFFf5f5f5),
+    surface = Color(0xFFFFFFFF),
+    onSurface = Color(0xFF212121),
+    primary = Color(0xFF212121),
+    onPrimary = Color(0xFFFFFFFF)
+)
+
+private val DarkColors = darkColorScheme(
+    background = Color(0xFF121212),
+    surface = Color(0xFF1E1E1E),
+    onSurface = Color(0xFFEEEEEE),
+    primary = Color(0xFFBB86FC),
+    onPrimary = Color(0xFF000000)
+)
 
 @Composable
 @Preview
-fun App() {
-    val myColorScheme = lightColorScheme(
-        primary = Color(0xFFFFFFFF),
-        primaryContainer = Color(0xFFf5f5f5),
-        secondary = Color(0xFF212121)
-    )
+fun App(profileViewModel: ProfileViewModel = viewModel()) {
+    val isDarkMode = profileViewModel.themeState.isDarkMode
 
-    var profile by remember {
-        mutableStateOf(
-            ProfileUiState(
-                name = "Faiq Ghozy Erlangga",
-                bio = "Informatics Student • Linux • NixOS • Full Stack Developer",
-                email = "faiq@email.com",
-                phone = "+62 812 3456 7890",
-                location = "Lampung, Indonesia"
-            )
-        )
-    }
-
-    MaterialTheme(colorScheme = myColorScheme) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.primaryContainer),
-            contentAlignment = Alignment.Center
-        ) {
-            ProfileCard(profile)
-        }
-    }
-}
-
-@Composable
-fun ProfileCard(profile: ProfileUiState) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(20.dp),
-        shape = RoundedCornerShape(16.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primary)
-                .padding(20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            ProfileHeader(
-                name = profile.name,
-                bio = profile.bio
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-
-            InfoItem("Email", profile.email)
-            InfoItem("Phone", profile.phone)
-            InfoItem("Location", profile.location)
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                onClick = {},
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondary,
-                    contentColor = Color.White
-                )            ) {
-                Text("Edit Profile")
-            }
-        }
-    }
-}
-
-@Composable
-fun ProfileHeader(
-    name: String,
-    bio: String
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Image(
-            painter = painterResource(Res.drawable.profile),
-            contentDescription = "Profile Image",
-            modifier = Modifier
-                .size(100.dp)
-                .clip(CircleShape)
-        )
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        Text(
-            text = name,
-            style = MaterialTheme.typography.titleLarge
-        )
-
-        Spacer(modifier = Modifier.height(6.dp))
-
-        Text(
-            text = bio,
-            style = MaterialTheme.typography.bodyMedium
-        )
-    }
-}
-
-@Composable
-fun InfoItem(
-    label: String,
-    value: String
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 6.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodyMedium
-        )
-
-        Text(
-            text = value,
-            style = MaterialTheme.typography.bodyMedium
+    MaterialTheme(colorScheme = if (isDarkMode) DarkColors else LightColors) {
+        ProfileScreen(
+            profile = profileViewModel.profileState,
+            isDarkMode = isDarkMode,
+            onToggleTheme = profileViewModel::toggleTheme,
+            onSaveProfile = profileViewModel::updateProfile
         )
     }
 }
