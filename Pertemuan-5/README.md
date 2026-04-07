@@ -1,27 +1,18 @@
-This is a Kotlin Multiplatform project targeting Android.
+# Aplikasi Notes Sederhana
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+## Screenshot Aplikasi
 
-### Build and Run Android Application
+![Screenshot 1](./../screenshots/pertemuan5-1.png)
+![Screenshot 2](./../screenshots/pertemuan5-2.png)
+![Screenshot 3](./../screenshots/pertemuan5-3.png)
+![Screenshot 4](./../screenshots/pertemuan5-4.png)
 
-To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:assembleDebug
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:assembleDebug
-  ```
+## Demo
 
----
+![Demo](./../screenshots/pertemuan5.gif)
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Cara run aplikasi
+- Buka Android Studio
+- Buka file `/Pertemuan-5/composeApp/src/androidMain/kotlin/com/pertemuan5/App.kt`
+- Tekan tombol hijau Run di kanan atas
+- Buka aplikasi pertemuan-5

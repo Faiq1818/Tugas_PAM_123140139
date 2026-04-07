@@ -39,9 +39,9 @@ data class Note(
 fun NotesScreen() {
     val notes = remember {
         mutableStateListOf(
-            Note(1, "Meeting Notes", "Discuss project timeline and deliverables with the team."),
-            Note(2, "Shopping List", "Milk, eggs, bread, butter, and coffee."),
-            Note(3, "Ideas", "Build a note-taking app with Jetpack Compose.")
+            Note(1, "Meeting Notes", "Discuss project timeline with the team."),
+            Note(2, "Shopping List", "Kopi, Susu, Beras, Daging."),
+            Note(3, "Ideas", "Neovim is peak code editor")
         )
     }
     var showDialog by remember { mutableStateOf(false) }
