@@ -1,21 +1,17 @@
-# Aplikasi Notes Sederhana
-
-## Screenshot Aplikasi
-
-![Screenshot 1](./../screenshots/pertemuan5-1.png)
-![Screenshot 2](./../screenshots/pertemuan5-2.png)
-![Screenshot 3](./../screenshots/pertemuan5-3.png)
-![Screenshot 4](./../screenshots/pertemuan5-4.png)
+# Aplikasi Notes Sederhana - Pertemuan 7
 
 ## Demo
+![Demo](./../screenshots/pertemuan7.gif)
 
-![Demo](./../screenshots/pertemuan5.gif)
-
-## Navigation Flow
-![Flow](./../screenshots/pertemuan5flow.png)
+## Screenshot Aplikasi
+![Screenshot 1](./../screenshots/pertemuan7-1.png)
+![Screenshot 2](./../screenshots/pertemuan7-2.png)
+![Screenshot 3](./../screenshots/pertemuan7-3.png)
+![Screenshot 4](./../screenshots/pertemuan7-4.png)
+![Screenshot 5](./../screenshots/pertemuan7-5.png)
+![Screenshot 6](./../screenshots/pertemuan7-6.png)
 
 ## Cara run aplikasi
 - Buka Android Studio
-- Buka file `/Pertemuan-5/composeApp/src/androidMain/kotlin/com/pertemuan5/App.kt`
-- Tekan tombol hijau Run di kanan atas
-- Buka aplikasi pertemuan-5
+- Buka folder `Pertemuan-7`
+- Tekan tombol **Run** (Ikon palu atau play hijau)
