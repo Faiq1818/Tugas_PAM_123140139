@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
@@ -17,12 +19,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.pertemuan5.platform.DeviceInfo
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun SettingsScreen(viewModel: SettingsViewModel = koinViewModel()) {
     val isDarkMode by viewModel.isDarkMode.collectAsStateWithLifecycle()
     val isSortByTitle by viewModel.isSortByTitle.collectAsStateWithLifecycle()
+    val deviceInfo: DeviceInfo = koinInject()
 
     Scaffold { innerPadding ->
         Column(
@@ -77,6 +82,41 @@ fun SettingsScreen(viewModel: SettingsViewModel = koinViewModel()) {
                     onCheckedChange = { viewModel.toggleSortByTitle(it) }
                 )
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            HorizontalDivider()
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                text = "Device Information",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(bottom = 12.dp)
+            )
+
+            DeviceInfoRow("Device", deviceInfo.deviceName)
+            DeviceInfoRow("OS Version", "Android ${deviceInfo.osVersion}")
+            DeviceInfoRow("SDK Version", deviceInfo.sdkVersion.toString())
+            DeviceInfoRow("App Version", deviceInfo.appVersion)
         }
+    }
+}
+
+@Composable
+private fun DeviceInfoRow(label: String, value: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp)
+    ) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.weight(1f)
+        )
+        Text(
+            text = value,
+            style = MaterialTheme.typography.bodyMedium
+        )
     }
 }

@@ -1,17 +1,13 @@
-# Aplikasi Notes Sederhana - Pertemuan 7
+# Aplikasi Notes dengan Platform Integration - Pertemuan 8
 
 ## Demo
-![Demo](./../screenshots/pertemuan7.gif)
+![Demo](./../screenshots/pertemuan8.gif)
 
 ## Screenshot Aplikasi
-![Screenshot 1](./../screenshots/pertemuan7-1.png)
-![Screenshot 2](./../screenshots/pertemuan7-2.png)
-![Screenshot 3](./../screenshots/pertemuan7-3.png)
-![Screenshot 4](./../screenshots/pertemuan7-4.png)
-![Screenshot 5](./../screenshots/pertemuan7-5.png)
-![Screenshot 6](./../screenshots/pertemuan7-6.png)
+![Screenshot 1](./../screenshots/pertemuan8-1.png)
+![Screenshot 2](./../screenshots/pertemuan8-2.png)
 
 ## Cara run aplikasi
 - Buka Android Studio
-- Buka folder `Pertemuan-7`
+- Buka folder `Pertemuan-8`
 - Tekan tombol **Run** (Ikon palu atau play hijau)

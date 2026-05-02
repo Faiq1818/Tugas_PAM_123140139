@@ -33,7 +33,6 @@ kotlin {
             implementation(libs.sqldelight.coroutines)
             implementation(libs.datastore.preferences)
             implementation(libs.koin.androidx.compose)
-            implementation(libs.coroutines.core)
             implementation(libs.coroutines.android)
         }
         commonMain.dependencies {
@@ -45,11 +44,11 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.coroutines.core)
 
             implementation(compose.materialIconsExtended)
 
             implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
-            // implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
