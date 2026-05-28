@@ -34,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.pertemuan5.components.NoteCard
@@ -43,10 +44,12 @@ import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 
 @Composable
-fun NotesScreen(viewModel: NotesViewModel = koinViewModel()) {
+fun NotesScreen(
+    viewModel: NotesViewModel = koinViewModel(),
+    networkMonitor: NetworkMonitor = koinInject()
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
-    val networkMonitor: NetworkMonitor = koinInject()
     val isConnected by networkMonitor.isConnected.collectAsStateWithLifecycle()
 
     var showDialog by remember { mutableStateOf(false) }
@@ -99,12 +102,13 @@ fun NotesScreen(viewModel: NotesViewModel = koinViewModel()) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
+                    .testTag("searchField")
             )
 
             when (val state = uiState) {
                 is NotesUiState.Loading -> {
                     Box(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier.fillMaxSize().testTag("loadingIndicator"),
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator()
@@ -112,7 +116,7 @@ fun NotesScreen(viewModel: NotesViewModel = koinViewModel()) {
                 }
                 is NotesUiState.Empty -> {
                     Box(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier.fillMaxSize().testTag("emptyState"),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(if (searchQuery.isNotBlank()) "No notes found." else "No notes yet. Tap + to add one.")
@@ -120,7 +124,7 @@ fun NotesScreen(viewModel: NotesViewModel = koinViewModel()) {
                 }
                 is NotesUiState.Success -> {
                     LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier.fillMaxSize().testTag("notesList"),
                         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {

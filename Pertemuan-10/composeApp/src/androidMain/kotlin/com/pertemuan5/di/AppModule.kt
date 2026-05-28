@@ -12,7 +12,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val appModule = module {
+val dataModule = module {
     single {
         val driver = AndroidSqliteDriver(AppDatabase.Schema, androidContext(), "notes.db")
         AppDatabase(driver)
@@ -24,7 +24,13 @@ val appModule = module {
     // Platform features
     single { DeviceInfo(androidContext()) }
     single { NetworkMonitor(androidContext()) }
+}
 
+val viewModelModule = module {
     viewModel { NotesViewModel(get(), get()) }
     viewModel { SettingsViewModel(get()) }
+}
+
+val appModule = module {
+    includes(dataModule, viewModelModule)
 }
