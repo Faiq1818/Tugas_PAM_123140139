@@ -1,5 +1,7 @@
 # Aplikasi Hello World Compose Multiplatform
 Aplikasi ini dibuat untuk saya mempelajari basic setup dan project structure dari Compose Multiplatform.
+- Nama : Faiq Ghozy Erlangga
+- NIM  : 123140139
 
 ## Screenshot Aplikasi
 ![Screenshot 1](./../screenshots/pertemuan1-1.png)
