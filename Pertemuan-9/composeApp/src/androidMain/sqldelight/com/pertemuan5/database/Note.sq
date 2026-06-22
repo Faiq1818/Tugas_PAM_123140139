@@ -1,0 +1,24 @@
+CREATE TABLE NoteEntity (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    body TEXT NOT NULL,
+    createdAt INTEGER NOT NULL
+);
+
+selectAll:
+SELECT * FROM NoteEntity ORDER BY createdAt DESC;
+
+selectAllOrderByTitle:
+SELECT * FROM NoteEntity ORDER BY title ASC;
+
+searchByTitleOrBody:
+SELECT * FROM NoteEntity WHERE title LIKE '%' || :query || '%' OR body LIKE '%' || :query || '%' ORDER BY createdAt DESC;
+
+insert:
+INSERT INTO NoteEntity(title, body, createdAt) VALUES (?, ?, ?);
+
+update:
+UPDATE NoteEntity SET title = ?, body = ? WHERE id = ?;
+
+deleteById:
+DELETE FROM NoteEntity WHERE id = ?;
