@@ -26,6 +26,7 @@ import com.pertemuan5.screens.FavoritesScreen
 import com.pertemuan5.screens.NotesScreen
 import com.pertemuan5.screens.SettingsScreen
 import com.pertemuan5.screens.SettingsViewModel
+import com.pertemuan5.screens.ChatbotScreen
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -74,6 +75,7 @@ fun App() {
             ) {
                 composable(Screen.Notes.route) { NotesScreen() }
                 composable(Screen.Favorites.route) { FavoritesScreen() }
+                composable(Screen.Chatbot.route) { ChatbotScreen() }
                 composable(Screen.Settings.route) { SettingsScreen() }
             }
         }

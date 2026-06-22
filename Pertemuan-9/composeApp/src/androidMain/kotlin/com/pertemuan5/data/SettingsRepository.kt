@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +18,8 @@ class SettingsRepository(private val context: Context) {
     companion object {
         val IS_DARK_MODE = booleanPreferencesKey("is_dark_mode")
         val SORT_BY_TITLE = booleanPreferencesKey("sort_by_title")
+        val AI_API_KEY = stringPreferencesKey("ai_api_key")
+        val AI_MODEL = stringPreferencesKey("ai_model")
     }
 
     val isDarkMode: Flow<Boolean> = dataStore.data.map { preferences ->
@@ -25,6 +28,14 @@ class SettingsRepository(private val context: Context) {
 
     val sortByTitle: Flow<Boolean> = dataStore.data.map { preferences ->
         preferences[SORT_BY_TITLE] ?: false
+    }
+
+    val aiApiKey: Flow<String> = dataStore.data.map { preferences ->
+        preferences[AI_API_KEY] ?: ""
+    }
+
+    val aiModel: Flow<String> = dataStore.data.map { preferences ->
+        preferences[AI_MODEL] ?: "gemini-1.5-flash"
     }
 
     suspend fun setDarkMode(enabled: Boolean) {
@@ -36,6 +47,18 @@ class SettingsRepository(private val context: Context) {
     suspend fun setSortByTitle(enabled: Boolean) {
         dataStore.edit { preferences ->
             preferences[SORT_BY_TITLE] = enabled
+        }
+    }
+
+    suspend fun setAiApiKey(apiKey: String) {
+        dataStore.edit { preferences ->
+            preferences[AI_API_KEY] = apiKey
+        }
+    }
+
+    suspend fun setAiModel(model: String) {
+        dataStore.edit { preferences ->
+            preferences[AI_MODEL] = model
         }
     }
 }

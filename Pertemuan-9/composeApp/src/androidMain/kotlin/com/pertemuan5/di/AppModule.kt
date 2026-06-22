@@ -3,11 +3,13 @@ package com.pertemuan5.di
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import com.pertemuan5.data.NoteRepository
 import com.pertemuan5.data.SettingsRepository
+import com.pertemuan5.data.ChatbotRepository
 import com.pertemuan5.database.AppDatabase
 import com.pertemuan5.platform.DeviceInfo
 import com.pertemuan5.platform.NetworkMonitor
 import com.pertemuan5.screens.NotesViewModel
 import com.pertemuan5.screens.SettingsViewModel
+import com.pertemuan5.screens.ChatbotViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -20,6 +22,7 @@ val appModule = module {
 
     single { NoteRepository(get()) }
     single { SettingsRepository(androidContext()) }
+    single { ChatbotRepository() }
 
     // Platform features
     single { DeviceInfo(androidContext()) }
@@ -27,4 +30,5 @@ val appModule = module {
 
     viewModel { NotesViewModel(get(), get()) }
     viewModel { SettingsViewModel(get()) }
+    viewModel { ChatbotViewModel(get(), get()) }
 }
