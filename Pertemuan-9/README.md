@@ -1,8 +1,5 @@
 # Aplikasi Notes dengan Platform Integration dan AI Chatbot - Pertemuan 9
 
-## Demo
-![Demo](./../screenshots/pertemuan9-1.png)
-
 ## Screenshot Aplikasi
 ![Screenshot 1](./../screenshots/pertemuan9-1.png)
 ![Screenshot 2](./../screenshots/pertemuan9-2.png)
